@@ -1,30 +1,54 @@
-version: "2.0"
+version: "3.0"
 
 stories:
+  - story: happy path # Happy User Greeting - Servicing Question
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - action: utter_service_question
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - story: sad path # Sad User Greeting - Servicing Question
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_mood_unhappy
+      - action: utter_service_question
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - story: bot? # Am I speaking to a bot?
+    steps:
+      - intent: speaking_to_bot
+      - action: utter_self_report
 
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - story: bot help faq 1 # Ambiguous FAQ
+    steps:
+      - intent: user_bot_abilty_question
+      - action: utter_bot_info
+
+  - story: bot help faq 2 # Specific FAQ
+    steps:
+      - intent: user_bot_abilty_question_specifics
+      - action: utter_bot_info_specifics
+
+  - story: check_existence_given_ticker_symbol # Check ticker when provided symbol
+    steps:
+      - intent: ticker_symbol_is_valid
+      - action: action_check_ticker_existence
+      - slot_was_set:
+          - ticker_symbol: [{ "ticker_symbol": "AAPL" }]
+
+  - story: ambiguous symbol query stock # Retrieve Ticker when unknown symbol
+    steps:
+      - intent: looking_for_info_no_provided_stock
+      - action: utter_query_info_for_ticker_symbol
+
+  - story: interactive_story_1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ticker_symbol_is_valid
+        entities:
+          - ticker_symbol: AAPL
+      - action: action_check_ticker_existence
