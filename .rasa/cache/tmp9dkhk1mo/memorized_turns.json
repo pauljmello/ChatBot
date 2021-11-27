@@ -1,0 +1,25 @@
+{
+  "lookup": {
+    "eJyLrq6NBQAEOAGx": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEqhJDM5O7UovrgyNyk/Jz6zOL4sMSczpbY2FgD8CCKP": "action_check_ticker_existence",
+    "eJyNjsEKwzAMQ3/FH1DGes2vlGIy1zDTNBmxWzZC/71m62W33iSQnjS0vYP2qrxhJJOSA7SfwBwXDnCaJGqcPbsqV89IdmsBTGjmivpZHiWhKG4xybRfg9KTacYTwe/vBLF3NRVTL/3RAwz97T5e/zAey2RUzw==": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xArMjU/KL4lPTMrMKamMLyxNLQZpqK2NBQBDQCOM": "utter_bot_info",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xArMjU/KL4lPTMrMKamMLyxNLQZpqCVgbGlJCVRjZl5aPinmxgIATrZF3g==": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEqhuCA1MTszLz2+JD8+Kb+ktjYWABLOH6Y=": "utter_self_report",
+    "eJyNjMEJgDAMAFfpAE7QVURClShBTUqS+ind3YL+9XcHx421DaFmxQvS4iQcQ30AOJ0YwysHmSP3thhqb4i7egyWMe3EG7jALN4+bsUdFQyPFRSzqP84TjdINz9n": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taS2NhYA6dwbhQ==": "utter_greet",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taSWgBmlJSWpRfEQpbhMiAUAQvc0lw==": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taSWgBmlJSWpRfEQpeSZQMAVufn5KSDzE4EGxQIAPEFQdQ==": "utter_happy",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taSWgBmlJSWpRfEQpeSZQMAVufn5KSDzE4l0SkZiQUElfmNiAVKZa5w=": "utter_service_question",
+    "eJyljlEKgCAQRK/iATqBV4kQsaGEUtNVCPHuGfWdUX877JvH9Ll0LDuPJKQibQ1n+TqEkSs4u8OiA8FUNgb4ymhTI3E2eYBKwxGJ4MWFfjM0VqzWjqdfvpwyS+f2/5raTlpBbBHhfD4bhwPmhItp": "action_listen",
+    "eJwty+0JwCAMRdFVHKATuEopQSWFgI0fiYUi7l6x/fcO3Lf3sZmeK97gglJia/o3gN2F1vyIJIo82yZYZ0M8qXYRfFJwnqI+UBrKOkjGQCcFGeN4AbwYJ6Q=": "utter_bot_info_specifics",
+    "eJydjVEKgCAQRK/iATqBV4lYTFZYqNXaNQjp7on50V/Q3zyYNzOWazAl7XiA80qRrSlPAHYrWtNhIVHk2s2Ce+0QV1TbEOao4GZa9IQtozRBEnoK5OX6OMiqfYI4xJf362u6AVL6UiY=": "action_listen",
+    "eJwtysEJwCAMQNFVMkAncJVSQtFYgjaRaL2Iu1dob//B38fcYBSjjqdvrOJgfIFy3uTgR+baSNb7VLL1sCw2B1k1sVwY1ZAlKopiMe0cKGBt6tOcxwu5vyeN": "utter_query_info_for_ticker_symbol",
+    "eJydjVEKhDAMRK/SA3iCXkUkuDUuoTXRNBWkePet6P+CfzPD8F5fz87VVXGHMRgJe1fvADwu6N1TEmVDbt+SUduHuFXzLolE4i/MokA8C7DAqrLThBNkkxDPP4JihgpbQT1uwoUyCrGt+Vg+kt5Zhx+nb1ZN": "action_listen",
+    "eJydjkEKgDAMBL+SB/iCfkUkVA0SrFWaKEjp3w2oBw8ieMsuw2zqXCrIS6INfac8Rwf5PDD6iRxcIbAoRWNXoWQMR4vqYEhEWj4cqyolPNF/hpcvTMDKJA5q5W60Edmndg5NBbf+0SMLbj5wX0pzAKJqX68=": "action_check_ticker_existence",
+    "eJytjlEKwjAQRK+yB+gJcpVSlrgOujRNS7ItSujdDbZ++CGK9G9nGN7btqwNlSlhYS+mY3RUtoOjH+BoD0GzIdbtnJHqRmON5uiSAFu/MGYzJN6m/xE+fFEBaorsqDWVvkryfTiNoWvohX/rWTMvPuj5R59cIT3vCNyedsEh/u4B1EWRPg==": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taSWgBmlJSWpRfEQpeSZQMAVufn5KfGleRmJBQWVtbWxAN75UWc=": "utter_mood_unhappy",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taSWgBmlJSWpRfEQpeSZQMAVufn5KfGleRmJBQWVxDkGRQcB82IBJdxwcQ==": "utter_service_question",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taSWgBmlJSWpRfEQpeSZQMAVufn5KfGleRmJBQWVxDkGRQcVzAPqL8tMTo0vLE0tBkkSMjMWAGh4kTA=": "action_listen"
+  }
+}

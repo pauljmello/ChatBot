@@ -1,34 +1,90 @@
-version: "2.0"
-
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+version: '3.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- greet
+- ticker_symbol_is_valid
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- speaking_to_bot
+- user_bot_abilty_question
+- user_bot_abilty_question_specifics
+- looking_for_info_no_provided_stock
+entities:
+- ticker_symbol
+- user_stock_information_goal
+slots:
+  ticker_symbol:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: custom
+  user_stock_information_goal:
+    type: categorical
+    influence_conversation: true
+    mappings:
+    - type: custom
+    values:
+    - open
+    - close
+    - high
+    - low
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  - text: Hello! How are you doing?
+  utter_happy:
+  - text: That's wonderful!
+  - text: That's fantastic!
+  - text: I'm so glad to hear that!
+  utter_mood_unhappy:
+  - text: I'm sorry to hear that.
+  - text: I hope it gets better soon.
+  - text: That's unfortunate, I hope your day gets better!
+  utter_service_question:
+  - text: What can I help you with?
+  - text: What can I do for you?
+  - text: How may I be of service?
+  - text: Is there anything I can help you with?
+  - text: How may I be of assitance?
+  utter_goodbye:
+  - text: Goodbye!
+  utter_self_report:
+  - text: I'm a chatbot and I'm here to help!
+  - text: I'm a robot bot designed to help!
+  - text: I'm a chatbot designed to help with all your stock market questions.
+  - text: I'm a chatbot!
+  - text: I'm a robot! A handsome one at that!
+  utter_bot_info:
+  - text: |-
+      I am a chat bot designed to relay information about the stock market.
+       Here's a list of the things I can do:
+       I can ...............................................................
+       I can ...............................................................
+       I can ...............................................................
+  utter_bot_info_specifics:
+  - text: |-
+      Here's a list of things I can do:
+       Given a stock I can check its High, Low, Open, and Closing prices of the day.
+  utter_query_info_for_ticker_symbol:
+  - text: Sure thing, what stock would you like to know about?
+  utter_valid_ticker_true:
+  - text: Yes, {name} is a valid ticker symbol.
+  utter_valid_ticker_false:
+  - text: No, {name} is not a valid ticker symbol.
+actions:
+- action_check_ticker_existence
+- utter_bot_info
+- utter_bot_info_specifics
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_mood_unhappy
+- utter_self_report
+- utter_service_question
+- utter_valid_ticker_false
+- utter_valid_ticker_true

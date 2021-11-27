@@ -1,92 +1,233 @@
-version: "2.0"
+version: "3.0"
 
 nlu:
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - welcome
+      - greetings
+      - nice to meet you
+      - hi
+      - nice to see you
+      - what's up
+      - hiya
+      - yo
+      - howdy
+      - good morning
+      - good afternoon
 
-- intent: goodbye
-  examples: |
-    - good afternoon
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+  - intent: goodbye
+    examples: |
+      - bye
+      - bye bye
+      - take care
+      - see you later
+      - cu
+      - see ya
+      - later
+      - take it easy
+      - ciao
+      - until next time
+      - peace out
+      - adios
+      - thank you, bye bye
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+  - intent: affirm
+    examples: |
+      - correct
+      - yes
+      - yea
+      - y
+      - mhm
+      - yup
+      - absolutely
+      - of course
+      - agreed
+      - definitely
+      - alright
+      - all right
+      - exactly
+      - okay
+      - ok
+      - k
+      - got it
+      - understood
+      - right
+      - good
+      - yeah
+      - positive
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+  - intent: deny
+    examples: |
+      - no
+      - never
+      - n
+      - no way
+      - nah
+      - nope
+      - Thats not right
+      - I dont think so
+      - not really
+      - uhm, no
+      - thats not what I wanted
+      - negative
+      - absolutely not
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+  - intent: mood_great
+    examples: |
+      - I'm so happy
+      - I'm feeling fantastic
+      - I'm doing great
+      - im good
+      - im doing fine
+      - im alright
+      - perfect
+      - wonderful
+      - amazing
+      - fantastic
+      - great
+      - excellent
+      - awesome
+      - marvelous
+      - terrific
+      - nice
+      - Like I'm on top of the world!
+      - Feeling like a hundred bucks!
+      - I'm feeling brand new!
+      - I'm on top of the world!
+      - Feeling good
+      - I'm having a good day
+      - I'm having a great day
+      - I'm fine
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+  - intent: mood_unhappy
+    examples: |
+      - I'm feeling awful
+      - I'm having a terrible day
+      - not good
+      - terrible
+      - I'm sad
+      - I'm really unhappy
+      - I'm so sad
+      - sad
+      - bad
+      - horrendous
+      - Down bad
+      - badddd
+      - sadddd
+      - feeling under the weather
+      - pretty miserable
+      - I just want the day to end
+      - could be better
+      - hanging in there
+      - not the best
+      - I'm feeling sick
+      - Kinda out of it
 
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+  - intent: speaking_to_bot
+    examples: |
+      - are you a bot?
+      - are you a robot?
+      - r u a bot?
+      - r u a human?
+      - are you a human?
+      - am I talking to a bot?
+      - is this a bot?
+      - am I talking to a human?
+      - is this a human?
+
+  - intent: user_bot_abilty_question
+    examples: |
+      - What can you do?
+      - What powers do you hold?
+      - help
+      - Help
+      - info
+      - What are you capable of?
+      - Tell me what you can do.
+      - -h
+      - What can you do for me?
+      - What are my options?
+      - Tell me about yourself.
+      - Show me what you got.
+      - Teach me about the stock market.
+      - I dont know, how can you help me?
+      - What is your purpose?
+      - Can you teach me about the stock market?
+      - What can you teach me about the stock market?
+
+  - intent: user_bot_abilty_question_specifics
+    examples: |
+      - I am looking for information about [FENC](ticker_symbol)
+      - What can you tell me about [FENC](ticker_symbol)
+      - [MEOA](ticker_symbol) ?
+      - Got anything on [MEOAA](ticker_symbol)
+      - Can you give me info about [MEOAW](ticker_symbol)
+      - What's going on with [FERG](ticker_symbol)
+      - What do you know about [AACG](ticker_symbol)
+
+  - intent: looking_for_info_no_provided_stock
+    examples: |
+      - I am looking for information 
+      - I am looking for information about a ticker symbol
+      - I am looking for info about a stock 
+      - I am looking for information about a ticker symbol
+
+  - intent: ticker_symbol_is_valid
+    examples: |
+      - Is [AAPL](ticker_symbol) valid company ticker?
+      - Does [AAPL](ticker_symbol) exist?
+      - Is [AACG](ticker_symbol) valid?
+      - Is [AAPL](ticker_symbol) ticker symbol?
+      - Is [CSPI](ticker_symbol) ticker name?
+      - Is [CSSEP](ticker_symbol) valid stock ticker?
+
+  - lookup: ticker_symbol
+    examples: |
+      - A
+      - AA
+      - AAC
+      - AACG
+      - AACI
+      - AAPL
+      - AFAQU
+      - AFAQW
+      - AKO/A
+      - AKO/B
+      - CSLT
+      - CSPI
+      - CSPR
+      - CSQ
+      - CSR
+      - CSR^C
+      - CSSE
+      - CSSEN
+      - CSSEP
+      - FEI           
+      - FEIM
+      - FELE
+      - FEMY
+      - FEN
+      - FENC
+      - FENG
+      - FEO
+      - FERG
+      - MEI
+      - MEIP
+      - MEKA
+      - MELI
+      - MEOA
+      - MEOAU
+      - MEOAW
+      - MEOH
+      - MER^K
+      - MERC
+      - MESA
+      - MESO
+      - RLJ^A
+      - RLMD
+      - RLX
+      - RLYB
+      - SCHW^D
+      - SCHW^J
