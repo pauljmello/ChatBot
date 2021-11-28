@@ -35,7 +35,7 @@ stories:
   - story: check_existence_given_ticker_symbol # Check ticker when provided symbol
     steps:
       - intent: ticker_symbol_is_valid
-      - action: action_check_ticker_existence
+      - action: action_ticker_existence
       - slot_was_set:
           - ticker_symbol: [{ "ticker_symbol": "AAPL" }]
 
@@ -51,4 +51,49 @@ stories:
       - intent: ticker_symbol_is_valid
         entities:
           - ticker_symbol: AAPL
-      - action: action_check_ticker_existence
+      - action: action_ticker_existence
+
+  - story: high ticker price
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ticker_symbol_user_question_high
+        entities:
+          - ticker_symbol: AAPL
+      - action: action_check_todays_high
+
+  - story: low ticker price
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ticker_symbol_user_question_low
+        entities:
+          - ticker_symbol: AAPL
+      - action: action_check_todays_low
+
+  - story: open ticker price
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ticker_symbol_user_question_open
+        entities:
+          - ticker_symbol: AAPL
+      - action: action_check_todays_open
+
+  - story: close ticker price
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ticker_symbol_user_question_close
+        entities:
+          - ticker_symbol: AAPL
+      - action: action_check_todays_close
+
+  - story: volume ticker price
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ticker_symbol_user_question_volume
+        entities:
+          - ticker_symbol: AAPL
+      - action: action_check_todays_volume

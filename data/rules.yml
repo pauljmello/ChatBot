@@ -10,3 +10,8 @@ rules:
     steps:
       - intent: speaking_to_bot
       - action: utter_self_report
+
+  - rule: Empty ticker purpose
+    steps:
+      - intent: empty_purpose_ticker
+      - action: utter_querey_purpose_for_empty_ticker

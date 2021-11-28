@@ -1,0 +1,6 @@
+[
+  {
+    "name": "ticker_symbol",
+    "pattern": "(\\bA\\b|\\bAA\\b|\\bAAC\\b|\\bAACG\\b|\\bAACI\\b|\\bAAPL\\b|\\bAFAQU\\b|\\bAFAQW\\b|\\bAKO/A\\b|\\bAKO/B\\b|\\bCSLT\\b|\\bCSPI\\b|\\bCSPR\\b|\\bCSQ\\b|\\bCSR\\b|\\bCSR\\^C\\b|\\bCSSE\\b|\\bCSSEN\\b|\\bCSSEP\\b|\\bFEI\\b|\\bFEIM\\b|\\bFELE\\b|\\bFEMY\\b|\\bFEN\\b|\\bFENC\\b|\\bFENG\\b|\\bFEO\\b|\\bFERG\\b|\\bMEI\\b|\\bMEIP\\b|\\bMEKA\\b|\\bMELI\\b|\\bMEOA\\b|\\bMEOAU\\b|\\bMEOAW\\b|\\bMEOH\\b|\\bMER\\^K\\b|\\bMERC\\b|\\bMESA\\b|\\bMESO\\b|\\bRLJ\\^A\\b|\\bRLMD\\b|\\bRLX\\b|\\bRLYB\\b|\\bSCHW\\^D\\b|\\bSCHW\\^J\\b)"
+  }
+]
