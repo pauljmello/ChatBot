@@ -1,6 +1,6 @@
 version: "3.0"
 nlu:
-  - lookup: ticker_names  
+  - lookup: ticker_symbol  
     examples: |
       - A
       - AA

@@ -1,5 +1,4 @@
 version: "3.0"
-
 nlu:
   - intent: greet
     examples: |
@@ -16,7 +15,7 @@ nlu:
       - howdy
       - good morning
       - good afternoon
-
+      - Hello
   - intent: goodbye
     examples: |
       - bye
@@ -32,7 +31,6 @@ nlu:
       - peace out
       - adios
       - thank you, bye bye
-
   - intent: affirm
     examples: |
       - correct
@@ -54,10 +52,8 @@ nlu:
       - got it
       - understood
       - right
-      - good
       - yeah
       - positive
-
   - intent: deny
     examples: |
       - no
@@ -73,7 +69,6 @@ nlu:
       - thats not what I wanted
       - negative
       - absolutely not
-
   - intent: mood_great
     examples: |
       - I'm so happy
@@ -99,10 +94,9 @@ nlu:
       - I'm feeling brand new!
       - I'm on top of the world!
       - Feeling good
-      - I'm having a good day
+      - I'm having a good day.
       - I'm having a great day
       - I'm fine
-
   - intent: mood_unhappy
     examples: |
       - I'm feeling awful
@@ -126,11 +120,7 @@ nlu:
       - not the best
       - I'm feeling sick
       - Kinda out of it
-
-  - intent: empty_purpose_ticker
-    examples: |
-      - [AAPL](ticker_symbol)
-
+      - down bad
   - intent: speaking_to_bot
     examples: |
       - are you a bot?
@@ -142,164 +132,109 @@ nlu:
       - is this a bot?
       - am I talking to a human?
       - is this a human?
-
   - intent: user_bot_abilty_question
     examples: |
+      - Tell me about yourself.
+      - I dont know, how can you help me?
+      - What is your purpose?
+      - What are you supposed to be?
+      - What do you do?
+      - How can you help me?
+  - intent: user_bot_abilty_question_specifics
+    examples: |
+      - help
+      - Help
+      - info
+      - bot info
+      - h
       - What can you do?
       - What powers do you hold?
       - What are you capable of?
       - Tell me what you can do.
       - What can you do for me?
       - What are my options?
-      - Tell me about yourself.
-      - Show me what you got.
-      - Teach me about the stock market.
-      - I dont know, how can you help me?
-      - What is your purpose?
       - Can you teach me about the stock market?
       - What can you teach me about the stock market?
-
-  - intent: user_bot_abilty_question_specifics
-    examples: |
-      - I am looking for information about [FENC](ticker_symbol)
-      - What can you tell me about [FENC](ticker_symbol)
-      - [MEOA](ticker_symbol) ?
-      - Got anything on [MEOAA](ticker_symbol)
-      - Can you give me info about [MEOAW](ticker_symbol)
-      - What's going on with [FERG](ticker_symbol)
-      - What do you know about [AACG](ticker_symbol)
-      - help
-      - Help
-      - info
-      - bot info
-      - h
-
   - intent: looking_for_info_no_provided_stock
     examples: |
-      - I am looking for information 
-      - I am looking for information about a ticker symbol
-      - I am looking for info about a stock 
-      - I am looking for information about a ticker symbol
-
+      - I am looking for information
+      - I am looking for info about a stock
   - intent: ticker_symbol_is_valid
     examples: |
-      - Is [AAPL](ticker_symbol) valid company ticker?
-      - Does [AAPL](ticker_symbol) exist?
-      - Is [AACG](ticker_symbol) valid?
-      - Is [AAPL](ticker_symbol) ticker symbol?
-      - Is [CSPI](ticker_symbol) ticker name?
-      - Is [CSSEP](ticker_symbol) valid stock ticker?
-
+      - Is [GMRE](ticker_symbol) valid company ticker?
+      - Does [GSKY](ticker_symbol) exist?
+      - Is [HL](ticker_symbol) valid?
+      - Is [IMOS](ticker_symbol) ticker symbol?
+      - Is [IOACU](ticker_symbol) ticker name?
+      - Is [ITCB](ticker_symbol) valid stock ticker?
   - intent: ticker_symbol_user_question_high
     examples: |
-      - What was the high for [AAPL](ticker_symbol) today?
-      - What was the peak for [AAPL](ticker_symbol) today?
-      - What was the highest price [AAPL](ticker_symbol) got to today?
-      - [AAPL](ticker_symbol) peak today
-      - Tell me what [AAPL](ticker_symbol) peak price today.
-      - What was [AAPL](ticker_symbol) peak price today?
-      - [AAPL](ticker_symbol) peak price
-      - [AAPL](ticker_symbol) peak 
-      - [AAPL](ticker_symbol) peak please
-      - Todays high for [AAPL](ticker_symbol)
-      - Todays high for [AAPL](ticker_symbol) please.
-
+      - What was the high for [KBNTW](ticker_symbol) today?
+      - What was [LAWS](ticker_symbol) high today?
+      - peak for [LAC](ticker_symbol) today?
+      - highest price [LMAT](ticker_symbol) got to today?
+      - [LYRA](ticker_symbol) peak today
+      - Tell me what [METC](ticker_symbol) peak price today.
+      - [MKTW](ticker_symbol) peak price
+      - Todays high for [MPC](ticker_symbol)
   - intent: ticker_symbol_user_question_low
     examples: |
-      - What was the low for [AAPL](ticker_symbol) today?
-      - What was the lowest price [AAPL](ticker_symbol) got to today?
+      - What was todays low for [AAPL](ticker_symbol)?
+      - lowest price [AAPL](ticker_symbol) got to today?
       - [AAPL](ticker_symbol) low today
       - Tell me what [AAPL](ticker_symbol) lowest price today.
-      - What was [AAPL](ticker_symbol) lowest price today?
+      - [AAPL](ticker_symbol) lowest price today?
       - [AAPL](ticker_symbol) lowest price
-      - [AAPL](ticker_symbol) low 
-      - [AAPL](ticker_symbol) low please
       - Todays low for [AAPL](ticker_symbol)
-      - Todays low for [AAPL](ticker_symbol) please.
-
   - intent: ticker_symbol_user_question_open
     examples: |
-      - What did [AAPL](ticker_symbol) open at today?
-      - What did [AAPL](ticker_symbol) start at today?
-      - [AAPL](ticker_symbol) open today
-      - Tell me what price [AAPL](ticker_symbol) opened at.
-      - [AAPL](ticker_symbol) opening price
-      - [AAPL](ticker_symbol) starting price today.
-      - Where did [AAPL](ticker_symbol) start today
-      - Can you tell me where [AAPL](ticker_symbol) opened at?
-      - [AAPL](ticker_symbol) opening stock price
-      - What was [AAPL](ticker_symbol) opening price today?
-      - Can you tell me where [AAPL](ticker_symbol) closed today?
-
+      - What did [AAPL](ticker_symbol) open at?
+      - What did [NRC](ticker_symbol) start at?
+      - [NAKD](ticker_symbol) open today
+      - Tell me what price [O](ticker_symbol) opened at.
+      - [OB](ticker_symbol) opening price
+      - [OC](ticker_symbol) starting price.
+      - Where did [OCCI](ticker_symbol) open at today
+      - Can you tell me where [OXAC](ticker_symbol) opened at?
+      - [RIG](ticker_symbol) opening stock price
+      - What was [SALM](ticker_symbol) opening price today?
   - intent: ticker_symbol_user_question_close
     examples: |
-      - What did [AAPL](ticker_symbol) close at today?
-      - What did [AAPL](ticker_symbol) end at today?
-      - [AAPL](ticker_symbol) closing price today
-      - What price did [AAPL](ticker_symbol) close at?
-      - [AAPL](ticker_symbol) closing price
+      - What did [ROOT](ticker_symbol) close at?
+      - What did [OSTK](ticker_symbol) end at?
+      - What price did [PANA](ticker_symbol) close at?
+      - [PNC](ticker_symbol) closing price
       - [AAPL](ticker_symbol) ending price today.
-      - Where did [AAPL](ticker_symbol) close today
-      - Can you tell me what price [AAPL](ticker_symbol) closed at?
-      - [AAPL](ticker_symbol) closing stock price
-      - What was [AAPL](ticker_symbol) closing price today?
-      - Can you tell me where [AAPL](ticker_symbol) closed today?
-
+      - Where did [RLAY](ticker_symbol) close today
+      - [PTA](ticker_symbol) closing stock price
+      - What was [SBFG](ticker_symbol) closing price today?
   - intent: ticker_symbol_user_question_volume
     examples: |
-      - [AAPL](ticker_symbol) trading volume.
-      - What was [AAPL](ticker_symbol) trading volume today?
-      - How much [AAPL](ticker_symbol) was traded today? 
-      - Total trading volume for [AAPL](ticker_symbol)
-      - [AAPL](ticker_symbol) volume.
-      - What was the volume pushed by [AAPL](ticker_symbol)
-      - Can you tell me about the trading volume for [AAPL](ticker_symbol) today?
-      - What can you tell me about [AAPL](ticker_symbol) trading volume today.
-      - [AAPL](ticker_symbol) trade volume
-      - [AAPL](ticker_symbol) total trading volume today.
+      - [SIERU](ticker_symbol) trading volume.
+      - What was [SOI](ticker_symbol) trading volume today?
+      - How much [STTK](ticker_symbol) was traded today?
+      - Total trading volume for [TBCPW](ticker_symbol)
+      - What was the volume pushed by [TRTN](ticker_symbol)
+      - Can you tell me about the trading volume for [TWLV](ticker_symbol) today?
+      - [TWST](ticker_symbol) trade volume
+      - [UKOMW](ticker_symbol) total trading volume today.
+  - intent: ticker_symbol_user_question_full_stock
+    examples: |
+      - I am looking for information about [ULBI](ticker_symbol)
+      - What can you tell me about [WPM](ticker_symbol)
+      - [VTN](ticker_symbol) info
+      - [M0](ticker_symbol) information
+      - Got anything on [AAPL](ticker_symbol)
+      - What can you give me about [AAPL](ticker_symbol)
+      - What's going on with [XL](ticker_symbol)
+      - What do you know about [JBL](ticker_symbol)
+      - Tell me whats going on with [Z](ticker_symbol) today
+      - Tell me everything about [IBM](ticker_symbol) today
+      - Whats up with [FEI](ticker_symbol) today?
+      - What happened with [FEFE](ticker_symbol) today?
+      - Give me information about [ZYXI](ticker_symbol)
+      - [TSLA](ticker_symbol)
 
   - lookup: ticker_symbol
     examples: |
-      - AACI
-      - AAPL
-      - AFAQU
-      - AFAQW
-      - MO
-      - AKO/B
-      - CSLT
-      - PFE
-      - CSPR
-      - CSQ
-      - CSR
-      - CSR^C
-      - CSSE
-      - CSSEN
-      - CSSEP
-      - FEI   
-      - TSLA        
-      - QCOM
-      - FELE
-      - BP
-      - FEN
-      - XOM
-      - JPM 
-      - FEO
-      - FERG
-      - MEI
-      - TOT
-      - IBM
-      - RDS/B
-      - MEOA
-      - MEOAU
-      - MEOAW
-      - MEOH
-      - MER^K
-      - MERC
-      - MESA
-      - MESO
-      - RLJ^A
-      - RLMD
-      - RLX
-      - RLYB
-      - SCHW^D
-      - SCHW^J
+      - data/TickerNanesYML.yml

@@ -92,7 +92,7 @@ class ActionCheckLow(Action):
             name = msg['value'].upper()
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
             lowVal = get_ticker_info_adjusted_daily(name, '3. low')
-            dispatcher.utter_message(text= f"Todays low for {name} was {lowVal}.")
+            dispatcher.utter_message(text= f"Todays low for {name} was {lowVal}")
             return []
         else:
             dispatcher.utter_message(template="utter_unfound_ticker_symbol", name = name)
@@ -111,8 +111,8 @@ class ActionCheckOpen(Action):
             print(tracker.latest_message)
             name = msg['value'].upper()
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
-            val = get_ticker_info_adjusted_daily(name, '1. open')
-            dispatcher.utter_message(text= f"Today {name} opened at {val}.")
+            openVal = get_ticker_info_adjusted_daily(name, '1. open')
+            dispatcher.utter_message(text= f"Today {name} opened at {openVal}")
             return []
         else:
             dispatcher.utter_message(template="utter_unfound_ticker_symbol", name = name)
@@ -131,8 +131,8 @@ class ActionCheckClose(Action):
             print(tracker.latest_message)
             name = msg['value'].upper()
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
-            val = get_ticker_info_adjusted_daily(name, '4. close')
-            dispatcher.utter_message(text= f"Today {name} closed at {val}.")
+            closeVal = get_ticker_info_adjusted_daily(name, '4. close')
+            dispatcher.utter_message(text= f"Today {name} closed at {closeVal}")
             return []
         else:
             dispatcher.utter_message(template="utter_unfound_ticker_symbol", name = name)
@@ -151,23 +151,56 @@ class ActionCheckVolume(Action):
             print(tracker.latest_message)
             name = msg['value'].upper()
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
-            val = get_ticker_info_adjusted_daily(name, '6. volume')
-            dispatcher.utter_message(text= f"Todays traded volume for {name} was {val}.")
+            Valume = get_ticker_info_adjusted_daily(name, '6. volume')
+            dispatcher.utter_message(text= f"Todays traded volume for {name} was {Valume}")
             return []
         else:
             dispatcher.utter_message(template="utter_unfound_ticker_symbol", name = name)
             return []
-# ------------------------------------------------------
+# -----------------------------------------------------------------
+
+# Below we account for checking and returning todays trading Volume
+# ------------------------------------------------------------------
+class ActionRetrieveTotalDailyAdjusted(Action):
+    def name(self) -> Text:
+        return "action_check_todays_ticker_total_adjusted"
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        for msg in tracker.latest_message['entities']:
+            print(tracker.latest_message)
+            name = msg['value'].upper()
+        if (CheckTickerValidity.run(dispatcher, tracker, domain)):
+            data = get_ticker_info_adjusted_daily_total(name)
+            open = data['1. open'][0]
+            high = data['2. high'][0]
+            low = data['3. low'][0]
+            close = data['4. close'][0]
+            volume = data['6. volume'][0]
+            dispatcher.utter_message(text= f"Todays values for {name} are as follows: \nOpen:\t{open} \nHigh:\t{high} \nLow:\t{low} \nClose:\t{close} \nVolume:\t{volume}")
+            return []
+        else:
+            dispatcher.utter_message(template="utter_unfound_ticker_symbol", name = name)
+            return []
+# -----------------------------------------------------------------
 
 # Inefficent API call, in the future we could save a large chunk of data and pull from local storage instead
 # For now this suits our needs because it gives us the ability to make 500 free api calls a day
 def get_ticker_info_adjusted_daily(ticker, request):
-    TS = TimeSeries(key='YJH452CREZ8Z0DC0', output_format='pandas')
+    data = get_Data(ticker)
+    val = data[request][0]
+    return val
+
+def get_ticker_info_adjusted_daily_total(ticker):
+    data = get_Data(ticker)
+    return data
+
+def get_Data(ticker):
+    TS = TimeSeries(key=tic, output_format='pandas')
     data = TS.get_daily_adjusted(ticker, outputsize='compact')
     data = data[0]
     data = pd.DataFrame(data)
-    val = data[request][0]
-    return val
+    return data
 
 class KnowledgeBase(ActionQueryKnowledgeBase):
     def __init__(self):

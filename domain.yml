@@ -14,12 +14,12 @@ intents:
   - user_bot_abilty_question
   - user_bot_abilty_question_specifics
   - looking_for_info_no_provided_stock
-  - empty_purpose_ticker
   - ticker_symbol_user_question_high
   - ticker_symbol_user_question_low
   - ticker_symbol_user_question_open
   - ticker_symbol_user_question_close
   - ticker_symbol_user_question_volume
+  - ticker_symbol_user_question_full_stock
 entities:
   - ticker_symbol
   - user_stock_information_goal
@@ -39,6 +39,7 @@ slots:
       - close
       - high
       - low
+      - volume
 responses:
   utter_greet:
     - text: Hey! How are you?
@@ -67,13 +68,13 @@ responses:
     - text: I'm a chatbot!
     - text: I'm a robot! A handsome one at that!
   utter_bot_info:
-    - text: |-
-        I am a chat bot designed to relay information about the stock market.
-        Here's a list of the things I can do:
-        I can check a stocks Volume, High, Low, Open, and Closing prices today.
+    - text: I am a chat bot designed to relay information about the stock market.
   utter_bot_info_specifics:
-    - text: |-
-        Given a stock I can check its Volume, High, Low, Open, and Closing prices of the day.
+    - text: "Given a stock I can check any of the following:\n\tTodays High, Low, Open, and Closing prices as well as todays traded volume.\n\tI can also give you information about a random stock."
+  utter_bot_try_this:
+    - text: "\nTake me for a test drive and try one of the following commands. Just replace 'AAPL' with your valid ticker symbol."
+  utter_bot_command_example:
+    - text: "\nWhere did AAPL open at today?\nWhat was the high for AAPL today?\nWhat was todays low for AAPL?\nWhat price did AAPL close at today?\nHow much AAPL was traded today?"
   # Query stock interests
   utter_query_info_for_ticker_symbol:
     - text: Sure thing, what stock would you like to know about?
@@ -87,12 +88,13 @@ responses:
     - text: I'm sorry, I couldn't find {name}. Maybe it was misspelled.
     - text: I'm sorry, {name} might be incorrect. Make sure it's spelled correctly and try again, or try out a different stock.
   utter_querey_purpose_for_empty_ticker:
-    - text: Please reenter the ticker with the type of information you are looking for. For a list of information I can display type "help" or "h".
+    - text: Please repeat your
   utter_ticker_symbol_high:
-    - text: Today's high for {name} was *Number*.
-    - text: The high for {name} today was *Number*.
+    - text: Today's high for {ticker_symbol} was *Number*.
+    - text: The high for {ticker_symbol} today was *Number*.
 
 actions:
+  - action_check_todays_ticker_total_adjusted
   - action_check_todays_open
   - action_check_todays_close
   - action_check_todays_low
@@ -102,6 +104,8 @@ actions:
   - action_ticker_existence
   - utter_bot_info
   - utter_bot_info_specifics
+  - utter_bot_try_this
+  - utter_bot_command_example
   - utter_goodbye
   - utter_greet
   - utter_happy

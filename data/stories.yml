@@ -27,11 +27,6 @@ stories:
       - intent: user_bot_abilty_question
       - action: utter_bot_info
 
-  - story: bot help faq 2 # Specific FAQ
-    steps:
-      - intent: user_bot_abilty_question_specifics
-      - action: utter_bot_info_specifics
-
   - story: check_existence_given_ticker_symbol # Check ticker when provided symbol
     steps:
       - intent: ticker_symbol_is_valid
@@ -49,8 +44,6 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: ticker_symbol_is_valid
-        entities:
-          - ticker_symbol: AAPL
       - action: action_ticker_existence
 
   - story: high ticker price
@@ -58,8 +51,6 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: ticker_symbol_user_question_high
-        entities:
-          - ticker_symbol: AAPL
       - action: action_check_todays_high
 
   - story: low ticker price
@@ -67,8 +58,6 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: ticker_symbol_user_question_low
-        entities:
-          - ticker_symbol: AAPL
       - action: action_check_todays_low
 
   - story: open ticker price
@@ -76,8 +65,6 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: ticker_symbol_user_question_open
-        entities:
-          - ticker_symbol: AAPL
       - action: action_check_todays_open
 
   - story: close ticker price
@@ -85,8 +72,6 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: ticker_symbol_user_question_close
-        entities:
-          - ticker_symbol: AAPL
       - action: action_check_todays_close
 
   - story: volume ticker price
@@ -94,6 +79,27 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: ticker_symbol_user_question_volume
-        entities:
-          - ticker_symbol: AAPL
       - action: action_check_todays_volume
+
+  - story: retrieve total ticker dayOf
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ticker_symbol_user_question_full_stock
+      - action: action_check_todays_ticker_total_adjusted
+
+  - story: interactive_story_1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_mood_unhappy
+      - action: utter_service_question
+      - slot_was_set:
+          - ticker_symbol: AAPL
+      - intent: ticker_symbol_user_question_full_stock
+      - action: action_check_todays_ticker_total_adjusted
+      - intent: ticker_symbol_user_question_full_stock
+      - action: action_check_todays_ticker_total_adjusted
+      - intent: ticker_symbol_user_question_full_stock
+      - action: action_check_todays_ticker_total_adjusted

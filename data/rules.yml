@@ -11,7 +11,9 @@ rules:
       - intent: speaking_to_bot
       - action: utter_self_report
 
-  - rule: Empty ticker purpose
+  - rule: User Help Question
     steps:
-      - intent: empty_purpose_ticker
-      - action: utter_querey_purpose_for_empty_ticker
+      - intent: user_bot_abilty_question_specifics
+      - action: utter_bot_info_specifics
+      - action: utter_bot_try_this
+      - action: utter_bot_command_example
