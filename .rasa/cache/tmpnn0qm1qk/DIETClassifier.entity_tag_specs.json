@@ -1,0 +1,28 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-ticker_symbol",
+      "2": "I-ticker_symbol",
+      "3": "L-ticker_symbol",
+      "4": "U-ticker_symbol",
+      "5": "B-user_stock_information_goal",
+      "6": "I-user_stock_information_goal",
+      "7": "L-user_stock_information_goal",
+      "8": "U-user_stock_information_goal",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-ticker_symbol": 1,
+      "I-ticker_symbol": 2,
+      "L-ticker_symbol": 3,
+      "U-ticker_symbol": 4,
+      "B-user_stock_information_goal": 5,
+      "I-user_stock_information_goal": 6,
+      "L-user_stock_information_goal": 7,
+      "U-user_stock_information_goal": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]

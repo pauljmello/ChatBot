@@ -17,3 +17,12 @@ rules:
       - action: utter_bot_info_specifics
       - action: utter_bot_try_this
       - action: utter_bot_command_example
+
+  - rule: Ambiguous ticker symbol
+    steps:
+      - intent: ambiguous_ticker
+      - slot_was_set:
+          - ticker_symbol: AAPL
+      - action: action_ambiguous_purpose_statement
+      - slot_was_set:
+          - user_stock_information_goal: VAL

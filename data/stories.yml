@@ -30,14 +30,18 @@ stories:
   - story: check_existence_given_ticker_symbol # Check ticker when provided symbol
     steps:
       - intent: ticker_symbol_is_valid
+        entities:
+          - ticker_symbol: AAPL
       - action: action_ticker_existence
       - slot_was_set:
-          - ticker_symbol: [{ "ticker_symbol": "AAPL" }]
+          - ticker_symbol: AAPL
 
   - story: ambiguous symbol query stock # Retrieve Ticker when unknown symbol
     steps:
       - intent: looking_for_info_no_provided_stock
       - action: utter_query_info_for_ticker_symbol
+      - slot_was_set:
+          - ticker_symbol: AAPL
 
   - story: interactive_story_1
     steps:
@@ -45,6 +49,8 @@ stories:
       - action: utter_greet
       - intent: ticker_symbol_is_valid
       - action: action_ticker_existence
+      - slot_was_set:
+          - ticker_symbol: TSLA
 
   - story: high ticker price
     steps:
@@ -52,6 +58,8 @@ stories:
       - action: utter_greet
       - intent: ticker_symbol_user_question_high
       - action: action_check_todays_high
+      - slot_was_set:
+          - ticker_symbol: XOM
 
   - story: low ticker price
     steps:
@@ -59,6 +67,8 @@ stories:
       - action: utter_greet
       - intent: ticker_symbol_user_question_low
       - action: action_check_todays_low
+      - slot_was_set:
+          - ticker_symbol: WMT
 
   - story: open ticker price
     steps:
@@ -66,6 +76,8 @@ stories:
       - action: utter_greet
       - intent: ticker_symbol_user_question_open
       - action: action_check_todays_open
+      - slot_was_set:
+          - ticker_symbol: BABA
 
   - story: close ticker price
     steps:
@@ -73,6 +85,8 @@ stories:
       - action: utter_greet
       - intent: ticker_symbol_user_question_close
       - action: action_check_todays_close
+      - slot_was_set:
+          - ticker_symbol: PG
 
   - story: volume ticker price
     steps:
@@ -80,15 +94,10 @@ stories:
       - action: utter_greet
       - intent: ticker_symbol_user_question_volume
       - action: action_check_todays_volume
+      - slot_was_set:
+          - ticker_symbol: AAPL
 
-  - story: retrieve total ticker dayOf
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: ticker_symbol_user_question_full_stock
-      - action: action_check_todays_ticker_total_adjusted
-
-  - story: interactive_story_1
+  - story: interactive_story_7
     steps:
       - intent: greet
       - action: utter_greet
@@ -103,3 +112,251 @@ stories:
       - action: action_check_todays_ticker_total_adjusted
       - intent: ticker_symbol_user_question_full_stock
       - action: action_check_todays_ticker_total_adjusted
+
+  - story: state multiturn desire from ambiguous stock open
+    steps:
+      - intent: ambiguous_ticker
+      - slot_was_set:
+          - ticker_symbol: AAPL
+      - action: action_ambiguous_purpose_statement
+      - intent: desired_open
+        entities:
+          - ticker_symbol: AAPL
+      - slot_was_set:
+          - user_stock_information_goal: open
+      - action: action_check_todays_open
+
+  - story: state multiturn desire from ambiguous stock close
+    steps:
+      - intent: ambiguous_ticker
+      - slot_was_set:
+          - ticker_symbol: AAPL
+      - action: action_ambiguous_purpose_statement
+      - intent: desired_close
+        entities:
+          - ticker_symbol: AAPL
+      - slot_was_set:
+          - user_stock_information_goal: close
+      - action: action_check_todays_close
+
+  - story: state multiturn desire from ambiguous stock low
+    steps:
+      - intent: ambiguous_ticker
+      - slot_was_set:
+          - ticker_symbol: AAPL
+      - action: action_ambiguous_purpose_statement
+      - intent: desired_low
+        entities:
+          - ticker_symbol: AAPL
+      - slot_was_set:
+          - user_stock_information_goal: low
+      - action: action_check_todays_low
+
+  - story: state multiturn desire from ambiguous stock high
+    steps:
+      - intent: ambiguous_ticker
+      - slot_was_set:
+          - ticker_symbol: AAPL
+      - action: action_ambiguous_purpose_statement
+      - intent: desired_high
+        entities:
+          - ticker_symbol: AAPL
+      - slot_was_set:
+          - user_stock_information_goal: high
+      - action: action_check_todays_high
+
+  - story: state multiturn desire from ambiguous stock volume
+    steps:
+      - intent: ambiguous_ticker
+      - slot_was_set:
+          - ticker_symbol: AAPL
+      - action: action_ambiguous_purpose_statement
+      - intent: desired_volume
+        entities:
+          - ticker_symbol: AAPL
+      - slot_was_set:
+          - user_stock_information_goal: volume
+      - action: action_check_todays_volume
+
+  - story: interactive_story_4
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - action: utter_service_question
+      - intent: ticker_symbol_user_question_full_stock
+        entities:
+          - ticker_symbol: AAPL
+      - action: action_check_todays_ticker_total_adjusted
+      - intent: ticker_symbol_user_question_full_stock
+        entities:
+          - ticker_symbol: TSLA
+      - action: action_check_todays_ticker_total_adjusted
+      - intent: goodbye
+        entities:
+          - ticker_symbol: you
+      - action: utter_goodbye
+
+  - story: interactive_story_1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - action: utter_service_question
+      - intent: user_bot_abilty_question_specifics
+      - action: utter_bot_info_specifics
+      - action: utter_bot_try_this
+      - action: utter_bot_command_example
+      - intent: ticker_symbol_user_question_open
+        entities:
+          - ticker_symbol: WMT
+      - action: action_check_todays_open
+      - intent: ticker_symbol_user_question_high
+        entities:
+          - user_stock_information_goal: high
+          - ticker_symbol: BABA
+      - action: action_check_todays_high
+
+  - story: interactive_story_2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - action: utter_service_question
+      - intent: ambiguous_ticker
+      - slot_was_set:
+          - ticker_symbol: AAPL
+      - action: action_ambiguous_purpose_statement
+      - slot_was_set:
+          - ticker_symbol: AAPL
+      - intent: desired_low
+      - slot_was_set:
+          - user_stock_information_goal: low
+        entities:
+          - ticker_symbol: IBM
+      - action: action_check_todays_low
+        entities:
+          - user_stock_information_goal: low
+          - ticker_symbol: IBM
+      - intent: ambiguous_ticker
+      - slot_was_set:
+          - ticker_symbol: IBM
+      - action: action_ambiguous_purpose_statement
+      - slot_was_set:
+          - ticker_symbol: IBM
+      - intent: desired_high
+      - slot_was_set:
+          - user_stock_information_goal: high
+        entities:
+          - ticker_symbol: IBM
+      - action: action_check_todays_high
+
+  - story: interactive_story_3
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - action: utter_service_question
+      - intent: user_bot_abilty_question_specifics
+      - action: utter_bot_info_specifics
+      - action: utter_bot_try_this
+      - action: utter_bot_command_example
+      - intent: ticker_symbol_is_valid
+        entities:
+          - ticker_symbol: XEM
+      - action: action_ticker_existence
+      - intent: ambiguous_ticker
+      - slot_was_set:
+          - ticker_symbol: AAN
+      - action: action_ambiguous_purpose_statement
+      - slot_was_set:
+          - ticker_symbol: AAN
+      - intent: desired_low
+        entities:
+          - ticker_symbol: AAN
+      - slot_was_set:
+          - user_stock_information_goal: low
+      - action: action_check_todays_low
+      - slot_was_set:
+          - user_stock_information_goal: low
+
+  - story: interactive_story_5
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_mood_unhappy
+      - action: utter_service_question
+      - intent: ticker_symbol_user_question_full_stock
+        entities:
+          - ticker_symbol: NAKD
+      - action: action_check_todays_ticker_total_adjusted
+
+  - story: interactive_story_1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_mood_unhappy
+      - action: utter_service_question
+      - intent: speaking_to_bot
+      - action: utter_self_report
+      - intent: desired_high
+      - slot_was_set:
+          - ticker_symbol: TSLA
+          - user_stock_information_goal: high
+      - action: action_check_todays_high
+      - slot_was_set:
+          - ticker_symbol: TSLA
+      - intent: ticker_symbol_user_question_open
+        entities:
+          - ticker_symbol: TSLA
+          - user_stock_information_goal: open
+      - action: action_check_todays_open
+      - slot_was_set:
+          - ticker_symbol: TSLA
+      - slot_was_set:
+          - user_stock_information_goal: open
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: interactive_story_1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - action: utter_service_question
+      - intent: looking_for_info_no_provided_stock
+      - action: utter_query_info_for_ticker_symbol
+      - intent: ambiguous_ticker
+      - slot_was_set:
+          - ticker_symbol: RBCN
+      - action: action_ambiguous_purpose_statement
+      - intent: ticker_symbol_user_question_low
+      - slot_was_set:
+          - user_stock_information_goal: lowest
+      - action: action_check_todays_low
+
+  - story: interactive_story_1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - action: utter_service_question
+      - intent: looking_for_info_no_provided_stock
+      - action: utter_query_info_for_ticker_symbol
+      - intent: ambiguous_ticker
+      - slot_was_set:
+          - ticker_symbol: NDSN
+      - action: action_ambiguous_purpose_statement
+      - entities:
+      - intent: desired_close
+        slot_was_set:
+          - user_stock_information_goal: closing
+      - action: action_check_todays_close

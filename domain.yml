@@ -1,25 +1,29 @@
 version: "3.0"
 session_config:
-  session_expiration_time: 60
+  session_expiration_time: 80
   carry_over_slots_to_new_session: true
 intents:
   - greet
-  - ticker_symbol_is_valid
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - speaking_to_bot
-  - user_bot_abilty_question
-  - user_bot_abilty_question_specifics
+  - desired_close
+  - ambiguous_ticker
   - looking_for_info_no_provided_stock
-  - ticker_symbol_user_question_high
-  - ticker_symbol_user_question_low
+  - mood_great
+  - desired_high
   - ticker_symbol_user_question_open
-  - ticker_symbol_user_question_close
-  - ticker_symbol_user_question_volume
+  - mood_unhappy
+  - goodbye
+  - speaking_to_bot
   - ticker_symbol_user_question_full_stock
+  - user_bot_abilty_question_specifics
+  - ticker_symbol_is_valid
+  - desired_low
+  - ticker_symbol_user_question_high
+  - ticker_symbol_user_question_close
+  - user_bot_abilty_question
+  - ticker_symbol_user_question_low
+  - ticker_symbol_user_question_volume
+  - desired_open
+  - desired_volume
 entities:
   - ticker_symbol
   - user_stock_information_goal
@@ -60,7 +64,6 @@ responses:
     - text: How may I be of assitance?
   utter_goodbye:
     - text: Goodbye!
-  # Start of Bot Information
   utter_self_report:
     - text: I'm a chatbot and I'm here to help!
     - text: I'm a robot bot designed to help!
@@ -70,50 +73,48 @@ responses:
   utter_bot_info:
     - text: I am a chat bot designed to relay information about the stock market.
   utter_bot_info_specifics:
-    - text: "Given a stock I can check any of the following:\n\tTodays High, Low, Open, and Closing prices as well as todays traded volume.\n\tI can also give you information about a random stock."
+    - text: |-
+        Given a stock I can check any of the following: 
+        Todays High, Low, Open, and Closing prices as well as todays traded volume.
   utter_bot_try_this:
-    - text: "\nTake me for a test drive and try one of the following commands. Just replace 'AAPL' with your valid ticker symbol."
+    - text: Take me for a test drive and try one of the following commands. Just replace 'AAPL' with your valid ticker symbol.
   utter_bot_command_example:
-    - text: "\nWhere did AAPL open at today?\nWhat was the high for AAPL today?\nWhat was todays low for AAPL?\nWhat price did AAPL close at today?\nHow much AAPL was traded today?"
-  # Query stock interests
+    - text: |-
+        What did AAPL open at today?
+        HIGH
+        What was todays low for AAPL?
+        Where did AAPL close at today?
+        How much AAPL was traded today?
   utter_query_info_for_ticker_symbol:
     - text: Sure thing, what stock would you like to know about?
-  # User checks validity of Stock
   utter_valid_ticker_true:
     - text: Yes, {name} is a valid ticker symbol.
   utter_valid_ticker_false:
     - text: No, {name} is not a valid ticker symbol.
-  # Unfound ticker symbol
   utter_unfound_ticker_symbol:
     - text: I'm sorry, I couldn't find {name}. Maybe it was misspelled.
     - text: I'm sorry, {name} might be incorrect. Make sure it's spelled correctly and try again, or try out a different stock.
-  utter_querey_purpose_for_empty_ticker:
-    - text: Please repeat your
-  utter_ticker_symbol_high:
-    - text: Today's high for {ticker_symbol} was *Number*.
-    - text: The high for {ticker_symbol} today was *Number*.
-
 actions:
-  - action_check_todays_ticker_total_adjusted
-  - action_check_todays_open
+  - action_ambiguous_purpose_statement
   - action_check_todays_close
-  - action_check_todays_low
   - action_check_todays_high
+  - action_check_todays_low
+  - action_check_todays_open
+  - action_check_todays_ticker_total_adjusted
   - action_check_todays_volume
   - action_check_valid_ticker
   - action_ticker_existence
+  - utter_bot_command_example
   - utter_bot_info
   - utter_bot_info_specifics
   - utter_bot_try_this
-  - utter_bot_command_example
   - utter_goodbye
   - utter_greet
   - utter_happy
   - utter_mood_unhappy
+  - utter_query_info_for_ticker_symbol
   - utter_self_report
   - utter_service_question
+  - utter_unfound_ticker_symbol
   - utter_valid_ticker_false
   - utter_valid_ticker_true
-  - utter_unfound_ticker_symbol
-  - utter_ticker_symbol_high
-  - utter_querey_purpose_for_empty_ticker

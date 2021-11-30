@@ -1,240 +1,785 @@
 version: "3.0"
 nlu:
-  - intent: greet
-    examples: |
-      - hey
-      - hello
-      - welcome
-      - greetings
-      - nice to meet you
-      - hi
-      - nice to see you
-      - what's up
-      - hiya
-      - yo
-      - howdy
-      - good morning
-      - good afternoon
-      - Hello
-  - intent: goodbye
-    examples: |
-      - bye
-      - bye bye
-      - take care
-      - see you later
-      - cu
-      - see ya
-      - later
-      - take it easy
-      - ciao
-      - until next time
-      - peace out
-      - adios
-      - thank you, bye bye
-  - intent: affirm
-    examples: |
-      - correct
-      - yes
-      - yea
-      - y
-      - mhm
-      - yup
-      - absolutely
-      - of course
-      - agreed
-      - definitely
-      - alright
-      - all right
-      - exactly
-      - okay
-      - ok
-      - k
-      - got it
-      - understood
-      - right
-      - yeah
-      - positive
-  - intent: deny
-    examples: |
-      - no
-      - never
-      - n
-      - no way
-      - nah
-      - nope
-      - Thats not right
-      - I dont think so
-      - not really
-      - uhm, no
-      - thats not what I wanted
-      - negative
-      - absolutely not
-  - intent: mood_great
-    examples: |
-      - I'm so happy
-      - I'm feeling fantastic
-      - I'm doing great
-      - im good
-      - im doing fine
-      - im alright
-      - perfect
-      - wonderful
-      - good
-      - good thanks
-      - amazing
-      - fantastic
-      - great
-      - excellent
-      - awesome
-      - marvelous
-      - terrific
-      - nice
-      - Like I'm on top of the world!
-      - Feeling like a hundred bucks!
-      - I'm feeling brand new!
-      - I'm on top of the world!
-      - Feeling good
-      - I'm having a good day.
-      - I'm having a great day
-      - I'm fine
-  - intent: mood_unhappy
-    examples: |
-      - I'm feeling awful
-      - I'm having a terrible day
-      - not good
-      - terrible
-      - I'm sad
-      - I'm really unhappy
-      - I'm so sad
-      - sad
-      - bad
-      - horrendous
-      - Down bad
-      - badddd
-      - sadddd
-      - feeling under the weather
-      - pretty miserable
-      - I just want the day to end
-      - could be better
-      - hanging in there
-      - not the best
-      - I'm feeling sick
-      - Kinda out of it
-      - down bad
-  - intent: speaking_to_bot
-    examples: |
-      - are you a bot?
-      - are you a robot?
-      - r u a bot?
-      - r u a human?
-      - are you a human?
-      - am I talking to a bot?
-      - is this a bot?
-      - am I talking to a human?
-      - is this a human?
-  - intent: user_bot_abilty_question
-    examples: |
-      - Tell me about yourself.
-      - I dont know, how can you help me?
-      - What is your purpose?
-      - What are you supposed to be?
-      - What do you do?
-      - How can you help me?
-  - intent: user_bot_abilty_question_specifics
-    examples: |
-      - help
-      - Help
-      - info
-      - bot info
-      - h
-      - What can you do?
-      - What powers do you hold?
-      - What are you capable of?
-      - Tell me what you can do.
-      - What can you do for me?
-      - What are my options?
-      - Can you teach me about the stock market?
-      - What can you teach me about the stock market?
-  - intent: looking_for_info_no_provided_stock
-    examples: |
-      - I am looking for information
-      - I am looking for info about a stock
-  - intent: ticker_symbol_is_valid
-    examples: |
-      - Is [GMRE](ticker_symbol) valid company ticker?
-      - Does [GSKY](ticker_symbol) exist?
-      - Is [HL](ticker_symbol) valid?
-      - Is [IMOS](ticker_symbol) ticker symbol?
-      - Is [IOACU](ticker_symbol) ticker name?
-      - Is [ITCB](ticker_symbol) valid stock ticker?
-  - intent: ticker_symbol_user_question_high
-    examples: |
-      - What was the high for [KBNTW](ticker_symbol) today?
-      - What was [LAWS](ticker_symbol) high today?
-      - peak for [LAC](ticker_symbol) today?
-      - highest price [LMAT](ticker_symbol) got to today?
-      - [LYRA](ticker_symbol) peak today
-      - Tell me what [METC](ticker_symbol) peak price today.
-      - [MKTW](ticker_symbol) peak price
-      - Todays high for [MPC](ticker_symbol)
-  - intent: ticker_symbol_user_question_low
-    examples: |
-      - What was todays low for [AAPL](ticker_symbol)?
-      - lowest price [AAPL](ticker_symbol) got to today?
-      - [AAPL](ticker_symbol) low today
-      - Tell me what [AAPL](ticker_symbol) lowest price today.
-      - [AAPL](ticker_symbol) lowest price today?
-      - [AAPL](ticker_symbol) lowest price
-      - Todays low for [AAPL](ticker_symbol)
-  - intent: ticker_symbol_user_question_open
-    examples: |
-      - What did [AAPL](ticker_symbol) open at?
-      - What did [NRC](ticker_symbol) start at?
-      - [NAKD](ticker_symbol) open today
-      - Tell me what price [O](ticker_symbol) opened at.
-      - [OB](ticker_symbol) opening price
-      - [OC](ticker_symbol) starting price.
-      - Where did [OCCI](ticker_symbol) open at today
-      - Can you tell me where [OXAC](ticker_symbol) opened at?
-      - [RIG](ticker_symbol) opening stock price
-      - What was [SALM](ticker_symbol) opening price today?
-  - intent: ticker_symbol_user_question_close
-    examples: |
-      - What did [ROOT](ticker_symbol) close at?
-      - What did [OSTK](ticker_symbol) end at?
-      - What price did [PANA](ticker_symbol) close at?
-      - [PNC](ticker_symbol) closing price
-      - [AAPL](ticker_symbol) ending price today.
-      - Where did [RLAY](ticker_symbol) close today
-      - [PTA](ticker_symbol) closing stock price
-      - What was [SBFG](ticker_symbol) closing price today?
-  - intent: ticker_symbol_user_question_volume
-    examples: |
-      - [SIERU](ticker_symbol) trading volume.
-      - What was [SOI](ticker_symbol) trading volume today?
-      - How much [STTK](ticker_symbol) was traded today?
-      - Total trading volume for [TBCPW](ticker_symbol)
-      - What was the volume pushed by [TRTN](ticker_symbol)
-      - Can you tell me about the trading volume for [TWLV](ticker_symbol) today?
-      - [TWST](ticker_symbol) trade volume
-      - [UKOMW](ticker_symbol) total trading volume today.
-  - intent: ticker_symbol_user_question_full_stock
-    examples: |
-      - I am looking for information about [ULBI](ticker_symbol)
-      - What can you tell me about [WPM](ticker_symbol)
-      - [VTN](ticker_symbol) info
-      - [M0](ticker_symbol) information
-      - Got anything on [AAPL](ticker_symbol)
-      - What can you give me about [AAPL](ticker_symbol)
-      - What's going on with [XL](ticker_symbol)
-      - What do you know about [JBL](ticker_symbol)
-      - Tell me whats going on with [Z](ticker_symbol) today
-      - Tell me everything about [IBM](ticker_symbol) today
-      - Whats up with [FEI](ticker_symbol) today?
-      - What happened with [FEFE](ticker_symbol) today?
-      - Give me information about [ZYXI](ticker_symbol)
-      - [TSLA](ticker_symbol)
-
-  - lookup: ticker_symbol
-    examples: |
-      - data/TickerNanesYML.yml
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - welcome
+    - greetings
+    - nice to meet you
+    - hi
+    - nice to see you
+    - what's up
+    - hiya
+    - yo
+    - howdy
+    - good morning
+    - good afternoon
+    - Hello
+    - Hello!
+- intent: goodbye
+  examples: |
+    - bye
+    - bye bye
+    - take care
+    - see you later
+    - cu
+    - see ya
+    - later
+    - take it easy
+    - ciao
+    - until next time
+    - peace out
+    - adios
+    - Thank you
+    - thank you
+- intent: mood_great
+  examples: |
+    - I'm so happy
+    - I'm feeling fantastic
+    - I'm doing great
+    - im good
+    - im doing fine
+    - im alright
+    - perfect
+    - wonderful
+    - good
+    - good thanks
+    - amazing
+    - fantastic
+    - great
+    - excellent
+    - awesome
+    - marvelous
+    - terrific
+    - nice
+    - Like I'm on top of the world!
+    - Feeling like a hundred bucks!
+    - I'm feeling brand new!
+    - I'm on top of the world!
+    - Feeling good
+    - I'm having a good day.
+    - I'm having a great day
+    - I'm fine
+    - im goind well, thank you
+    - I'm good, thank you!
+    - good thank you!
+    - im doing well thanks
+    - good thank you
+- intent: mood_unhappy
+  examples: |
+    - I'm feeling awful
+    - I'm having a terrible day
+    - not good
+    - terrible
+    - I'm sad
+    - I'm really unhappy
+    - I'm so sad
+    - sad
+    - bad
+    - horrendous
+    - Down bad
+    - badddd
+    - sadddd
+    - feeling under the weather
+    - pretty miserable
+    - I just want the day to end
+    - could be better
+    - hanging in there
+    - not the best
+    - I'm feeling sick
+    - Kinda out of it
+    - down bad
+    - tired
+    - exhausted
+- intent: speaking_to_bot
+  examples: |
+    - are you a bot?
+    - are you a robot?
+    - r u a bot?
+    - r u a human?
+    - are you a human?
+    - am I talking to a bot?
+    - is this a bot?
+    - am I talking to a human?
+    - is this a human?
+    - Are you a chat bot?
+- intent: user_bot_abilty_question
+  examples: |
+    - Tell me about yourself.
+    - I dont know, how can you help me?
+    - What is your purpose?
+    - What are you supposed to be?
+    - What do you do?
+    - How can you help me?
+- intent: user_bot_abilty_question_specifics
+  examples: |
+    - help
+    - Help
+    - info
+    - bot info
+    - h
+    - What can you do?
+    - What powers do you hold?
+    - What are you capable of?
+    - Tell me what you can do.
+    - What can you do for me?
+    - What are my options?
+    - Can you teach me about the stock market?
+    - What can you teach me about the stock market?
+    - what can you do?
+- intent: ambiguous_ticker
+  examples: |
+    - [TSLA](ticker_symbol) please
+    - [APPL](ticker_symbol) ?
+    - [IBM](ticker_symbol)
+    - The [XOM](ticker_symbol)
+    - [IOACU](ticker_symbol) stock
+    - [AAPL](ticker_symbol)
+    - [AAN](ticker_symbol)
+    - [RBCN](ticker_symbol)
+    - [NDSN](ticker_symbol) please
+- intent: looking_for_info_no_provided_stock
+  examples: |
+    - I am looking for information
+    - I am looking for info about a stock
+    - I'm looking for information about a stock
+    - i want to know about a stock
+- intent: ticker_symbol_is_valid
+  examples: |
+    - Is [GMRE](ticker_symbol) valid company ticker?
+    - Does [GSKY](ticker_symbol) exist?
+    - Does [GSKY](ticker_symbol) exist as a ticker?
+    - is [HL](ticker_symbol) a valid name?
+    - Is [HL](ticker_symbol) a valid ticker?
+    - Is [HL](ticker_symbol) a valid as a ticker?
+    - Is [IMOS](ticker_symbol) a ticker symbol?
+    - is [IOACU](ticker_symbol) a ticker name?
+    - Is [ITCB](ticker_symbol) valid stock ticker?
+    - is [XEM](ticker_symbol) a valid ticker
+- intent: ticker_symbol_user_question_high
+  examples: |
+    - What was the [high](user_stock_information_goal) for [KBNTW](ticker_symbol) today?
+    - What was [LAWS](ticker_symbol) [high](user_stock_information_goal) today?
+    - [peak](user_stock_information_goal) for [LAC](ticker_symbol) today?
+    - [Highest](user_stock_information_goal) price [LMAT](ticker_symbol) got to today?
+    - [LYRA](ticker_symbol) [peak](user_stock_information_goal) today
+    - Tell me what [METC](ticker_symbol) [peak](user_stock_information_goal) price was today.
+    - [MKTW](ticker_symbol) [peak](user_stock_information_goal) price
+    - Todays [high](user_stock_information_goal) for [MPC](ticker_symbol)
+    - What was the [high](user_stock_information_goal) for [BABA](ticker_symbol) today?
+- intent: ticker_symbol_user_question_low
+  examples: |
+    - What can you tell me about [OXAC](ticker_symbol) [low](user_stock_information_goal)?
+    - What was todays [low](user_stock_information_goal) for [STTK](ticker_symbol)?
+    - [Lowest](user_stock_information_goal) price [AAPL](ticker_symbol) got to today?
+    - [VTN](ticker_symbol) low today
+    - Tell me what [M0](ticker_symbol) [lowest](user_stock_information_goal) price today.
+    - [SIERU](ticker_symbol) [lowest](user_stock_information_goal) price today?
+    - [UKOMW](ticker_symbol) [lowest](user_stock_information_goal) price
+    - Todays [lowest](user_stock_information_goal) for [TRTN](ticker_symbol)
+    - [lowest](user_stock_information_goal) price
+- intent: ticker_symbol_user_question_open
+  examples: |
+    - [Opening](user_stock_information_goal) price of [AAPL](ticker_symbol)
+    - What did [AAPL](ticker_symbol) [open](user_stock_information_goal) at?
+    - What can you tell me about [AAPL](ticker_symbol) [open](user_stock_information_goal)?
+    - What did [NRC](ticker_symbol) [start](user_stock_information_goal) at?
+    - [NAKD](ticker_symbol) [open](user_stock_information_goal) today
+    - Tell me what price [O](ticker_symbol) [opened](user_stock_information_goal) at.
+    - [OB](ticker_symbol) [opening](user_stock_information_goal) price
+    - [OC](ticker_symbol) [starting](user_stock_information_goal) price.
+    - Where did [OCCI](ticker_symbol) [open](user_stock_information_goal) at today
+    - Can you tell me where [OXAC](ticker_symbol) [opened](user_stock_information_goal) at?
+    - [RIG](ticker_symbol) [opening](user_stock_information_goal) stock price
+    - What was [SALM](ticker_symbol) [opening](user_stock_information_goal) price today?
+    - What did [WMT](ticker_symbol) open at today?
+    - [TSLA](ticker_symbol) [open](user_stock_information_goal)
+- intent: ticker_symbol_user_question_close
+  examples: |
+    - [Closing](user_stock_information_goal) price of [RLAY](ticker_symbol)
+    - What can you tell me about [AAPL](ticker_symbol) [close](user_stock_information_goal)?
+    - What did [ROOT](ticker_symbol) [close](user_stock_information_goal) at?
+    - What did [OSTK](ticker_symbol) [end](user_stock_information_goal) at?
+    - What price did [PANA](ticker_symbol) [close](user_stock_information_goal) at?
+    - [PNC](ticker_symbol) [closing](user_stock_information_goal) price
+    - [AAPL](ticker_symbol) [ending](user_stock_information_goal) price today.
+    - Where did [RLAY](ticker_symbol) [close](user_stock_information_goal) at today?
+    - Can you tell me where [OXAC](ticker_symbol) [closed](user_stock_information_goal) at?
+    - [PTA](ticker_symbol) [closing](user_stock_information_goal) stock price
+    - What was [SBFG](ticker_symbol) closing](user_stock_information_goal) price today?
+- intent: ticker_symbol_user_question_volume
+  examples: |
+    - What can you tell me about [AAPL](ticker_symbol) [volume](user_stock_information_goal)?
+    - [SIERU](ticker_symbol) trading [volume](user_stock_information_goal).
+    - What was [SOI](ticker_symbol) trading [volume](user_stock_information_goal) today?
+    - How much [STTK](ticker_symbol) was traded today?
+    - Total trading [volume](user_stock_information_goal) for [TBCPW](ticker_symbol)
+    - What was the [volume](user_stock_information_goal) pushed by [TRTN](ticker_symbol)
+    - Can you tell me about the trading [volume](user_stock_information_goal) for [TWLV](ticker_symbol) today?
+    - [TWST](ticker_symbol) trade [volume](user_stock_information_goal)
+    - [UKOMW](ticker_symbol) total trading [volume](user_stock_information_goal) today.
+- intent: ticker_symbol_user_question_full_stock
+  examples: |
+    - I am looking for information about [ULBI](ticker_symbol)
+    - [VTN](ticker_symbol) info
+    - [M0](ticker_symbol) information
+    - Got anything on [AAPL](ticker_symbol)
+    - What can you give me about [AAPL](ticker_symbol)
+    - What's going on with [XL](ticker_symbol)
+    - What about todays values for [XL](ticker_symbol)
+    - What do you know about [JBL](ticker_symbol)
+    - Tell me whats going on with [Z](ticker_symbol) today
+    - Tell me everything about [IBM](ticker_symbol) today
+    - Whats up with [FEI](ticker_symbol) today?
+    - What happened with [FEFE](ticker_symbol) today?
+    - Give me information about [ZYXI](ticker_symbol)
+    - Can you tell me about [OXAC](ticker_symbol)?
+    - How about [PTA](ticker_symbol)?
+    - tell me about the [AAPL](ticker_symbol) stock
+    - What about [TSLA](ticker_symbol)?
+    - what do you know about [NAKD](ticker_symbol)
+- intent: desired_open
+  examples: |
+    - I would like to see the [open](user_stock_information_goal)
+    - [open](user_stock_information_goal) please
+    - Tell me the [opening](user_stock_information_goal) information
+    - Tell me about its [open](user_stock_information_goal)
+    - The [open](user_stock_information_goal) please
+    - [opening](user_stock_information_goal) price
+- intent: desired_high
+  examples: |
+    - I would like to see the [high](user_stock_information_goal)
+    - [high](user_stock_information_goal) please
+    - Tell me the [high](user_stock_information_goal) information
+    - Tell me about its [high](user_stock_information_goal)
+    - The [high](user_stock_information_goal) please
+    - todays [high](user_stock_information_goal) price
+    - [high](user_stock_information_goal) stock price today
+    - [TSLA](ticker_symbol) [high](user_stock_information_goal)
+- intent: desired_low
+  examples: |
+    - I would like to see the [low](user_stock_information_goal)
+    - [low](user_stock_information_goal) please
+    - Tell me the [low](user_stock_information_goal) information
+    - Tell me about its [low](user_stock_information_goal)
+    - The [low](user_stock_information_goal) please
+    - [lowset](user_stock_information_goal) stock price
+    - [low](user_stock_information_goal) price
+    - todays [low](user_stock_information_goal) price
+- intent: desired_close
+  examples: |
+    - I would like to see the [closing](user_stock_information_goal)
+    - [close](user_stock_information_goal) please
+    - Tell me the [closing](user_stock_information_goal) information
+    - Tell me about its [close](user_stock_information_goal)
+    - The [close](user_stock_information_goal)
+    - The [closing](user_stock_information_goal)
+    - [closing](user_stock_information_goal) price
+    - Tell me the [closing](user_stock_information_goal) information
+- intent: desired_volume
+  examples: |
+    - I would like to see the [volume](user_stock_information_goal)
+    - [volume](user_stock_information_goal) please
+    - Tell me the [volume](user_stock_information_goal) information
+    - Tell me about its [volume](user_stock_information_goal)
+    - The [volume](user_stock_information_goal) please
+    - trading [volume](user_stock_information_goal)
+- lookup: user_stock_information_goal
+  examples: |
+    - open
+    - opened
+    - opening
+    - start
+    - started
+    - starting
+    - close
+    - closed
+    - closing
+    - end
+    - ended
+    - ending
+    - finished
+    - high
+    - highest
+    - peak
+    - peaked
+    - low
+    - lowest
+    - volume
+- lookup: ticker_symbol
+  examples: |
+    - AAPL
+    - ABIO
+    - ABM
+    - ABMD
+    - ABNB
+    - ABOS
+    - ABR
+    - AGM^D
+    - AGM^E
+    - AGM^F
+    - AGM^G
+    - AMSWA
+    - AMT
+    - AMTB
+    - AMTI
+    - AMTX
+    - AMWD
+    - AMWL
+    - AMX
+    - AMYT
+    - AMZN
+    - AN
+    - ANAB
+    - ANAC
+    - ANAT
+    - ANDE
+    - ANEB
+    - ANET
+    - ANF
+    - ANGI
+    - ANGN
+    - ANGO
+    - ANIK
+    - ANIP
+    - ANIX
+    - ANNX
+    - ANPC
+    - ANSS
+    - ANTE
+    - ANTM
+    - ANVS
+    - ANY
+    - ANZU
+    - ANZUU
+    - ANZUW
+    - BTAQW
+    - BTB
+    - BTBD
+    - BTBDW
+    - BTBT
+    - BTCM
+    - BTCS
+    - BTCY
+    - BTG
+    - BTI
+    - BTN
+    - BTNB
+    - BTO
+    - BTRS
+    - BTRSW
+    - BTT
+    - BTTR
+    - BTTX
+    - BTU
+    - BTWN
+    - BTWNU
+    - BTWNW
+    - BTX
+    - BTZ
+    - BUD
+    - BUI
+    - BUR
+    - BURL
+    - BUSE
+    - BV
+    - BVH
+    - BVN
+    - BVS
+    - BVXV
+    - BW
+    - BW^A
+    - BWA
+    - BWAC
+    - BWACW
+    - BWAY
+    - BWB
+    - BWBBP
+    - BWC
+    - BWCAU
+    - BWCAW
+    - BWEN
+    - BWFG
+    - BWG
+    - BWMN
+    - BWMX
+    - BWSN
+    - BWXT
+    - BX
+    - BXC
+    - BXMT
+    - BXMX
+    - BXP
+    - BXRX
+    - BXSL
+    - BY
+    - BYD
+    - BYFC
+    - BYM
+    - BYND
+    - BYRN
+    - BYSI
+    - BYTS
+    - BYTSW
+    - BZ
+    - BZH
+    - BZUN
+    - C
+    - C^J
+    - CADL
+    - CAE
+    - CAF
+    - CAG
+    - CAH
+    - CAJ
+    - CAKE
+    - CAL
+    - CALA
+    - CALB
+    - CALM
+    - CALT
+    - CALX
+    - CAMP
+    - CAMT
+    - CAN
+    - CFMS
+    - CFR
+    - CFR^
+    - EBC
+    - EBET
+    - EBF
+    - EBIX
+    - EBMT
+    - EBON
+    - EBR
+    - EBS
+    - EBTC
+    - EC
+    - ECAT
+    - ECC
+    - ECCB
+    - ECCC
+    - ECCW
+    - ECCX
+    - ECCY
+    - ECF
+    - ECF^A
+    - ECL
+    - ECOL
+    - FUNC
+    - FUND
+    - FURY
+    - FUSB
+    - FUSN
+    - FUTU
+    - FUV
+    - FVAM
+    - FVCB
+    - FVE
+    - GAME
+    - GDL^C
+    - GDO
+    - GDOT
+    - GDP
+    - GDRX
+    - GDS
+    - GDV
+    - GDV^G
+    - GDV^H
+    - GTBP
+    - GTE
+    - GTEC
+    - GTES
+    - GTH
+    - GTHX
+    - GTIM
+    - GTLB
+    - GTLS
+    - GTN
+    - GTPA
+    - GTPAU
+    - GTPAW
+    - GTPB
+    - GTPBU
+    - HPP^C
+    - HPQ
+    - HPS
+    - HPX
+    - HQH
+    - HQI
+    - HQL
+    - HQY
+    - HR
+    - HRB
+    - HRC
+    - HRI
+    - HRL
+    - HRMY
+    - HROW
+    - HROWL
+    - HRT
+    - HRTG
+    - HRTX
+    - HRZN
+    - HSAQ
+    - HSBC
+    - HSC
+    - ICMB
+    - ICPT
+    - ICR^A
+    - ICUI
+    - ICVX
+    - ID
+    - IDA
+    - IDBA
+    - IH
+    - IHC
+    - IHD
+    - IHG
+    - IMGO
+    - IMH
+    - IMKTA
+    - IMMP
+    - IMMR
+    - IMNM
+    - IMO
+    - IMOS
+    - IMPL
+    - IMPX
+    - IMRA
+    - IMRN
+    - IMRNW
+    - IMRX
+    - IMTE
+    - IMTX
+    - IMTXW
+    - IMUX
+    - IMV
+    - IMVT
+    - IMXI
+    - INAB
+    - INAQ
+    - INBK
+    - INBKZ
+    - INBX
+    - INCR
+    - INCY
+    - INDB
+    - INDI
+    - INDIW
+    - INDO
+    - INDP
+    - INDT
+    - INFA
+    - INFI
+    - INFN
+    - INFO
+    - INFU
+    - INFY
+    - ING
+    - INGN
+    - INGR
+    - INKA
+    - INKAW
+    - INKT
+    - INM
+    - INMB
+    - INMD
+    - INN
+    - INN^E
+    - INN^F
+    - INNV
+    - INO
+    - INOD
+    - INOV
+    - INPX
+    - INS
+    - INSE
+    - INSG
+    - INSI
+    - INSM
+    - INSP
+    - INST
+    - INSW
+    - INSW^A
+    - INT
+    - INTA
+    - INTC
+    - INTEU
+    - INTG
+    - INTT
+    - INTU
+    - INTZ
+    - INUV
+    - INVA
+    - INVE
+    - INVH
+    - INVO
+    - INVZ
+    - INVZW
+    - IPWR
+    - IQ
+    - IQI
+    - IQMDU
+    - IQV
+    - IR
+    - ITHXW
+    - ITI
+    - ITIC
+    - ITMR
+    - ITOS
+    - ITP
+    - ITQ
+    - ITQRU
+    - ITQRW
+    - ITRG
+    - ITRI
+    - ITRM
+    - ITRN
+    - ITT
+    - ITUB
+    - ITW
+    - IVA
+    - IVAC
+    - IVAN
+    - MG
+    - MGA
+    - MGEE
+    - MGF
+    - MGI
+    - MGIC
+    - MGLN
+    - MIGI
+    - MILE
+    - MILEW
+    - MIME
+    - MIMO
+    - MIN
+    - MIND
+    - MINDP
+    - MINM
+    - MIO
+    - MIR
+    - MIRM
+    - MIRO
+    - MIST
+    - MIT
+    - MITA
+    - MITAU
+    - MKD
+    - MKFG
+    - MKL
+    - MKSI
+    - MKTW
+    - MNR^C
+    - MNRL
+    - MNRO
+    - MNSB
+    - MNSBP
+    - MNSO
+    - MNST
+    - MNTK
+    - MNTS
+    - MNTSW
+    - MNTV
+    - MNTX
+    - MO
+    - MOD
+    - MODN
+    - MODV
+    - MOFG
+    - MPV
+    - MPW
+    - MPWR
+    - MPX
+    - MQ
+    - MQT
+    - MQY
+    - MRAI
+    - MRAM
+    - MRBK
+    - MRC
+    - MRCC
+    - MRCY
+    - MS^A
+    - MS^E
+    - MS^F
+    - MS^I
+    - MS^K
+    - MS^L
+    - MS^O
+    - MSA
+    - MSAC
+    - MSACW
+    - MSB
+    - MSBI
+    - MSC
+    - MSCI
+    - MSD
+    - MSDA
+    - MSDAU
+    - MSDAW
+    - MSEX
+    - MSFT
+    - MSGE
+    - MSGM
+    - MSGS
+    - MSI
+    - MSM
+    - MSN
+    - MSP
+    - MSTR
+    - MSVB
+    - MT
+    - MTA
+    - MTAC
+    - MTACU
+    - MTACW
+    - MTAL
+    - MTB
+    - MTBC
+    - OCFCP
+    - OCFT
+    - OCG
+    - OCGN
+    - OCN
+    - OCSL
+    - OCUL
+    - OCUP
+    - OCX
+    - PALI
+    - PALT
+    - PAM
+    - PBBK
+    - PBC
+    - PBCT
+    - PBCTP
+    - PBF
+    - PBFS
+    - PBFX
+    - PBH
+    - PBHC
+    - PBI
+    - PGR
+    - PGRE
+    - PGRW
+    - PGRWU
+    - PGRWW
+    - PGTI
+    - PGZ
+    - PH
+    - PHAR
+    - PHAS
+    - PHAT
+    - PHCF
+    - PHD
+    - PHG
+    - PHGE
+    - PMX
+    - PNBK
+    - ZWS
+    - ZY
+    - ZYME
+    - ZYNE
+    - ZYXI
