@@ -1,12 +1,3 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
-
-
-# This is a simple example for a custom action which utters "Hello World!"
-
 import json
 import pandas as pd
 from alpha_vantage.timeseries import TimeSeries
@@ -18,23 +9,16 @@ from rasa_sdk.knowledge_base.storage import InMemoryKnowledgeBase
 from rasa_sdk.knowledge_base.actions import ActionQueryKnowledgeBase
 from rasa_sdk.events import SlotSet
 
-#knowledge = Path("data/TickerNames.txt").read_text().split("\n")
-
-#format = TimeSeries(key=tic, output_format='pandas')
-#data = format.get <SOME TIME FRAME>('<TICKER SYMBOL>')
-
-#data[0]
-
 tic = "YJH452CREZ8Z0DC0"
 knowledge = Path("data/TickerNames.txt").read_text().split("\n")
 
-class ActionCheckTicker(Action):    # Used to ensure ticker is valid for remaining work
+class ActionCheckTicker(Action):    # Returns whether ticker is valid (present in NYSE stock exchange)
     def name(self) -> Text:
         return "action_check_valid_ticker"
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        name = next(tracker.get_latest_entity_values("ticker_symbol"), None)
+        name = next(tracker.get_latest_entity_values("ticker_symbol"), None) or tracker.get_slot("ticker_symbol")
         if name in knowledge:
             return True
         else:
@@ -42,14 +26,14 @@ class ActionCheckTicker(Action):    # Used to ensure ticker is valid for remaini
 
 CheckTickerValidity = ActionCheckTicker()
 
-class ActionTickerExistence(Action):    # Used for user to find/ensure ticker is valid
+class ActionTickerExistence(Action):    # Used to return statement to user on ticker validity
     def name(self) -> Text:
         return "action_ticker_existence"
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        name = next(tracker.get_latest_entity_values("ticker_symbol"), None)
-        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None)
+        name = next(tracker.get_latest_entity_values("ticker_symbol"), None) or tracker.get_slot("ticker_symbol")
+        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None) or tracker.get_slot("user_stock_information_goal")
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
             dispatcher.utter_message(response="utter_valid_ticker_true", name = name)
             return [SlotSet("ticker_symbol", name), SlotSet("user_stock_information_goal", goal)]
@@ -65,8 +49,8 @@ class ActionCheckHigh(Action):
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        name = next(tracker.get_latest_entity_values("ticker_symbol"), None)
-        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None)
+        name = next(tracker.get_latest_entity_values("ticker_symbol"), None) or tracker.get_slot("ticker_symbol")
+        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None) or tracker.get_slot("user_stock_information_goal")
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
             highVal = get_ticker_info_adjusted_daily(name, '2. high')
             dispatcher.utter_message(text= f"Todays high for {name} was {highVal}.")
@@ -84,8 +68,8 @@ class ActionCheckLow(Action):
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        name = next(tracker.get_latest_entity_values("ticker_symbol"), None)
-        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None)
+        name = next(tracker.get_latest_entity_values("ticker_symbol"), None) or tracker.get_slot("ticker_symbol")
+        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None) or tracker.get_slot("user_stock_information_goal")
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
             lowVal = get_ticker_info_adjusted_daily(name, '3. low')
             dispatcher.utter_message(text= f"Todays low for {name} was {lowVal}")
@@ -103,8 +87,8 @@ class ActionCheckOpen(Action):
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        name = next(tracker.get_latest_entity_values("ticker_symbol"), None)
-        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None)
+        name = next(tracker.get_latest_entity_values("ticker_symbol"), None) or tracker.get_slot("ticker_symbol")
+        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None) or tracker.get_slot("user_stock_information_goal")
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
             openVal = get_ticker_info_adjusted_daily(name, '1. open')
             dispatcher.utter_message(text= f"Today {name} opened at {openVal}")
@@ -122,8 +106,8 @@ class ActionCheckClose(Action):
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        name = next(tracker.get_latest_entity_values("ticker_symbol"), None)
-        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None)
+        name = next(tracker.get_latest_entity_values("ticker_symbol"), None) or tracker.get_slot("ticker_symbol")
+        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None) or tracker.get_slot("user_stock_information_goal")
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
             closeVal = get_ticker_info_adjusted_daily(name, '4. close')
             dispatcher.utter_message(text= f"Today {name} closed at {closeVal}")
@@ -141,8 +125,8 @@ class ActionCheckVolume(Action):
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        name = next(tracker.get_latest_entity_values("ticker_symbol"), None)
-        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None)
+        name = next(tracker.get_latest_entity_values("ticker_symbol"), None) or tracker.get_slot("ticker_symbol")
+        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None) or tracker.get_slot("user_stock_information_goal")
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
             Valume = get_ticker_info_adjusted_daily(name, '6. volume')
             dispatcher.utter_message(text= f"Todays traded volume for {name} was {Valume}")
@@ -160,8 +144,8 @@ class ActionRetrieveTotalDailyAdjusted(Action):
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        name = next(tracker.get_latest_entity_values("ticker_symbol"), None)
-        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None)
+        name = next(tracker.get_latest_entity_values("ticker_symbol"), None) or tracker.get_slot("ticker_symbol")
+        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None) or tracker.get_slot("user_stock_information_goal")
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
             data = get_ticker_info_adjusted_daily_total(name)
             open = data['1. open'][0]
@@ -176,7 +160,7 @@ class ActionRetrieveTotalDailyAdjusted(Action):
             return []
 # -----------------------------------------------------------------
 
-# Below we account for ambiguous statement
+# Below we account for ambiguous statements given a ticker
 # ------------------------------------------------------------------
 class ActionAmbiguousStatementPurpose(Action):
     def name(self) -> Text:
@@ -184,8 +168,8 @@ class ActionAmbiguousStatementPurpose(Action):
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        name = next(tracker.get_latest_entity_values("ticker_symbol"), None)
-        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None)
+        name = next(tracker.get_latest_entity_values("ticker_symbol"), None) or tracker.get_slot("ticker_symbol")
+        goal = next(tracker.get_latest_entity_values("user_stock_information_goal"), None) or tracker.get_slot("user_stock_information_goal")
         SlotSet("ticker_symbol", name), SlotSet("user_stock_information_goal", open)
         if (CheckTickerValidity.run(dispatcher, tracker, domain)):
             dispatcher.utter_message(text= f"What would you like to know about {name}?")

@@ -12,6 +12,7 @@ pipeline:
   # See https://rasa.com/docs/rasa/tuning-your-model for more information.
   - name: WhitespaceTokenizer
   - name: RegexFeaturizer
+    case_sensitive: True
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer
   - name: CountVectorsFeaturizer
@@ -30,7 +31,7 @@ pipeline:
     ambiguity_threshold: 0.1
   - name: RegexEntityExtractor
     use_lookup_tables: True
-    case_sensitive: False
+    case_sensitive: True
     use_regexes: True
     use_word_boundaries: True
 

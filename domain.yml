@@ -1,21 +1,21 @@
 version: "3.0"
 session_config:
-  session_expiration_time: 80
+  session_expiration_time: 1000
   carry_over_slots_to_new_session: true
 intents:
+  - ticker_symbol_user_question_full_stock
+  - goodbye
   - greet
+  - user_bot_abilty_question_specifics
+  - mood_great
+  - desired_high
+  - ticker_symbol_is_valid
   - desired_close
   - ambiguous_ticker
   - looking_for_info_no_provided_stock
-  - mood_great
-  - desired_high
   - ticker_symbol_user_question_open
   - mood_unhappy
-  - goodbye
   - speaking_to_bot
-  - ticker_symbol_user_question_full_stock
-  - user_bot_abilty_question_specifics
-  - ticker_symbol_is_valid
   - desired_low
   - ticker_symbol_user_question_high
   - ticker_symbol_user_question_close
@@ -80,8 +80,9 @@ responses:
     - text: Take me for a test drive and try one of the following commands. Just replace 'AAPL' with your valid ticker symbol.
   utter_bot_command_example:
     - text: |-
+        Is AAPL a valid stock?
         What did AAPL open at today?
-        HIGH
+        What was the high for AAPL today?
         What was todays low for AAPL?
         Where did AAPL close at today?
         How much AAPL was traded today?
