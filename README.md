@@ -30,41 +30,41 @@ This bot can provide the user with the following information when prompted:
 
 Simple Example:
 
-User: Hello
-Bot: Hey! How are you?
-User: Good thank you! 
-Bot: I'm so glad to hear that! What can I help you with?
-User: I am looking for information about a stock.
-Bot: Sure thing, what stock would you like to know about?
-User: Tell me whats going on with AAPL today.
-Bot: < Will list todays Open, High, Low, Close, and Volume for AAPL >
-User: What about TSLA?
-Bot: < Will list todays Open, High, Low, Close, and Volume for TSLA >
-User: Thank you!
-Bot: Goodbye!
-
-Multiturn Example:
-
-User: hi
-Bot: Hey! How are you?
-User: im sad and tired
-Bot: I'm sorry to hear that. WHow may I be of assistance?
-User: idk what can you do?
-Bot: < Bot will list its abilities with example commands >
-User: Is XOM a valid stock?
-Bot: Yes, XOM is a valid ticker symbol.
-User: then what was its closing price?
-Bot: Today XOM closed at < closing price >
-User: Where did it open? 
-Bot: Today XOM opened at < opening price >
-User: QCOM
-Bot: What would you like to know about QCOM?
-User: its volume traded
-Bot: Todays traded volume for QCOM was < traded volume >
-User: thank you
-Bot: Goodbye!
-
-These examples illustrate the types of conversations flows implemented in this chat bot.
+User: Hello  
+Bot: Hey! How are you?  
+User: Good thank you!  
+Bot: I'm so glad to hear that! What can I help you with?  
+User: I am looking for information about a stock.  
+Bot: Sure thing, what stock would you like to know about?  
+User: Tell me whats going on with AAPL today.  
+Bot: < Will list todays Open, High, Low, Close, and Volume for AAPL >  
+User: What about TSLA?  
+Bot: < Will list todays Open, High, Low, Close, and Volume for TSLA >  
+User: Thank you!  
+Bot: Goodbye!  
+  
+Multiturn Example:  
+  
+User: hi  
+Bot: Hey! How are you?  
+User: im sad and tired  
+Bot: I'm sorry to hear that. WHow may I be of assistance?  
+User: idk what can you do?  
+Bot: < Bot will list its abilities with example commands >  
+User: Is XOM a valid stock?  
+Bot: Yes, XOM is a valid ticker symbol.  
+User: then what was its closing price?  
+Bot: Today XOM closed at < closing price >  
+User: Where did it open?  
+Bot: Today XOM opened at < opening price >  
+User: QCOM  
+Bot: What would you like to know about QCOM?  
+User: its volume traded  
+Bot: Todays traded volume for QCOM was < traded volume >  
+User: thank you  
+Bot: Goodbye!  
+  
+These examples illustrate the types of conversations flows implemented in this chat bot.  
 
 ### __Notes__ ###
 
