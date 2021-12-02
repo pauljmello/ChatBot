@@ -2,11 +2,11 @@
 
 ### __Purpose__ ###
 
-Most financial websites have a considerable amount of "fat" and "fluff" that can inhibit a common users experience to see the information they desire.  The purpose of this project is to develop a chat bot that is capable of relaying recent stock market information to a user without this extra fluff. In this way we can comb through the data to retrieve only the most relevant pieces a user desires. Specifically, this chat bot is currently able to return the most recent High, Low, Open, Close, and trading volume of any given stock on the NYSE.
+Most financial websites have a considerable amount of "fat" and "fluff" that can inhibit a common user's experience to see the information they desire.  The purpose of this project is to develop a chat bot that is capable of relaying recent stock market information to a user without this extra fluff. In this way we can comb through the data to retrieve only the most relevant pieces a user desires. Specifically, this chat bot is currently able to return the most recent High, Low, Open, Close, and trading volume of any given stock on the NYSE.
 
 ### __Contents__ ### 
 
-This bot is capable of understanding a total of 21 user utterances and capable of responding with 21 unique types of messages. Part of these utterances include a small bit of banter that provides the user with a more human like experience. It can also handle a total of 5 multi-turn conversations where a user may ask for different stocks given a goal, or different goals given a stock. This is done by storing recent user messages and saving the extracted entitites for a users goal and stock choice. 
+This bot is capable of understanding a total of 21 user utterances and capable of responding with 21 unique types of messages. Part of these utterances include a small bit of banter that provides the user with a more human-like experience. It can also handle a total of 5 multi-turn conversations where a user may ask for different stocks given a goal, or different goals given a stock. This is done by storing recent user messages and saving the extracted entities for a users goal and stock choice. 
 
 This bot uses Alpha Vantage's API to return the daily values of a stock to the user. Future implementations can expand on the current bot's state inorder to retrieve specific values from a specific date and much more. However, for the scope and goal of this project I am content with its current state. 
 
@@ -14,9 +14,9 @@ This bot uses Alpha Vantage's API to return the daily values of a stock to the u
 
 This bot can provide the user with the following information when prompted:
 
-1. Collect and store a users goal and most recent ticker symbol.
+1. Collect and store a user's goal and most recent ticker symbol.
 
-2. Todays High, Low, Open, Close, and trading volume individually or aggregated given a user provided stock and goal.
+2. Today's High, Low, Open, Close, and trading volume individually or aggregated given a user provided stock and goal.
 
 3. Check to see if the user provided ticker symbol is valid on the NYSE.
 
@@ -48,7 +48,7 @@ Multiturn Example:
 User: hi  
 Bot: Hey! How are you?  
 User: im sad and tired  
-Bot: I'm sorry to hear that. WHow may I be of assistance?  
+Bot: I'm sorry to hear that. How may I be of assistance?  
 User: idk what can you do?  
 Bot: < Bot will list its abilities with example commands >  
 User: Is XOM a valid stock?  
@@ -68,4 +68,4 @@ These examples illustrate the types of conversations flows implemented in this c
 
 ### __Notes__ ###
 
-In order to run this program one must install all the packages in the requirments.txt. This will ensure that the proper packages are loaded. Additionally, it is crucial to note that the chatbot requires a user to know the ticker symbol and provide it to the bot in all capital letters, just as one would see on the stock market. This is because their are many ticker symbols which overlap with english words. 
+In order to run this program one must install all the packages in the requirments.txt. This will ensure that the proper packages are loaded. Additionally, it is crucial to note that the chatbot requires a user to know the ticker symbol and provide it to the bot in all capital letters, just as one would see on the stock market. This is because there are many ticker symbols which overlap with English words. 
